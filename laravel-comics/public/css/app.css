@@ -1,0 +1,17 @@
+.jumbotron{
+    background-image: url('../images/jumbotron.jpg');
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+}
+
+footer{
+    background-image: url('../images/footer-bg.jpg');
+    height: 300px;
+}
+
+.dio{
+    width: 200px;
+}
+
+
