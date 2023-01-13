@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <ul class="navbar-nav d-flex align-items-center ">
           <li class="nav-item">
-            <a class="nav-link" href="#"><img src="{{asset('images/dc-logo.png')}}" alt="logo"></a>
+            <a class="nav-link" href="{{route('home')}}"><img src="{{asset('images/dc-logo.png')}}" alt="logo"></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">CHARACTERS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">COMICS</a>
+            <a class="nav-link" href="{{route('comics')}}">COMICS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">MOVIES</a>

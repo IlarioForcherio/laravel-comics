@@ -10,8 +10,14 @@ footer{
     height: 300px;
 }
 
-.dio{
+main{
+    padding: 50px;
+    background-color: black;
+}
+
+.card{
     width: 200px;
+    height: 200px;
 }
 
 
