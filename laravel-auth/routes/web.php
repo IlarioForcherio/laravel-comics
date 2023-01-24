@@ -13,24 +13,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-
+// da qui si gestiscono le rotte sotto autenticazione
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-//Qui dobbiamo creare un modo per gestire le rotte sotto autenticazione
+//QUI si creano le rotte sotto autenticazione(middleware):
+//-il middleware verifica se l'utente e' loggato
+//-namespace indica la cartella dove cercare il controller
+//localhost:8000/admin ->prefix('admin')
+//nome della rotta della route list es admin.index ->name('admin.')
+
 Route::middleware('auth')
-    ->namespace('Admin')
-    ->prefix('admin') //localhost:8080/admin/posts
-    ->name('admin.')
-    ->group(function(){
-        Route::get('/', 'HomeController@index')->name('index');
-        //controllers per crud
-        Route::resource('/posts', PostController::class);
+->namespace('Admin')
+->prefix('admin')
+->name('admin.')
+->group(function(){
+
+    Route::get('/', "HomeController@index")->name('index');
 });
 
-//Qui dobbiamo trovare un  modo per gestire tutte le rotte che non usano autenticazione
-Route::get('{any?}', function(){
+
+
+
+//Qui si creano le rotte che non sono sotto autenticazione
+
+Route::get('{any?}',function(){
     return view('guest.home');
-})->where("any", ".*");
+})->where('any','.*');
+
+//questa scritta vuol dire per ogni rotta che non e' compresa nella route middleware
+//questo pezzo di codice va sempre alla fine
+
+//creare nella cartella views ->cartella guest->home.blade.php
+
+
+//per creare lo scaffolding di laravel con vue mandare i seguenti comandi:
+//composer require laravel/ui:^2.4
+//php artisan ui vue --auth
+// npm install && npm run dev
+//creare un controller che sara' visualizzato solo da un utente loggato:
+//php artisan make:controller Admin/HomeController
